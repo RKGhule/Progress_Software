@@ -9,6 +9,10 @@ from services.aggregator import merge_results
 
 from fastapi.middleware.cors import CORSMiddleware
 
+import os
+import uvicorn
+
+
 app = FastAPI()
 
 app.add_middleware(
@@ -49,3 +53,7 @@ def analyze(request: RequestModel):
     final_report = merge_results(all_results)
 
     return final_report
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))  # Render provides PORT
+    uvicorn.run(app, host="0.0.0.0", port=port)
