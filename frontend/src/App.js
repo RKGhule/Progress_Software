@@ -69,7 +69,7 @@ function App() {
     setData(null);
 
     try {
-      const res = await axios.post("http://127.0.0.1:8000/analyze", {
+      const res = await axios.post("https://progress-software.onrender.com/analyze", {
         competitors: competitors.split(",").map(c => c.trim()),
         urls: urls.split(",").map(u => u.trim()),
       });
